@@ -18,6 +18,6 @@ namespace CirculoDeSangre
         public string Email { get; set; }
         public bool Enfermedad { get; set; }
         public bool Medicamentos { get; set; }
-
+        
     }
 }

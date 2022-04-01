@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//agoBertoni
+
 namespace CirculoDeSangre
 {
     internal class Program
