@@ -8,5 +8,6 @@ namespace CirculoDeSangre
 {
     internal class Sangre
     {
+        public string NombreTipo { get; set; }
     }
 }

@@ -8,5 +8,7 @@ namespace CirculoDeSangre
 {
     internal class Categoria
     {
+        public string NombreCategoria { get; set; }
+        public float MontoCuotra { get; set; }
     }
 }
