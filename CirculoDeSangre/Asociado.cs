@@ -10,15 +10,15 @@ namespace CirculoDeSangre
     {
                
         //metodo de atributos
-        public long DNI { get; set; } 
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
-        public string Nacimiento { get; set; }
-        public string Domicilio { get; set; }
-        public long AlturaDomicilio { get; set; }
-        public string Localidad { get; set; }
-        public long Telefono { get; set; }
-        public string Email { get; set; }
+        public long DNI { get; set; } //mejor si es string
+        public string Nombre { get; set; } = String.Empty;
+        public string Apellido { get; set; } = String.Empty;
+        public string Nacimiento { get; set; } = String.Empty;
+        public string Domicilio { get; set; } = String.Empty;
+        public long AlturaDomicilio { get; set; } 
+        public string Localidad { get; set; } = String.Empty;
+        public long Telefono { get; set; } 
+        public string Email { get; set; } = String.Empty;
         public bool Enfermedad { get; set; }
         public bool Medicamentos { get; set; }
 
@@ -79,6 +79,12 @@ namespace CirculoDeSangre
             if (other == null) return false;
             return (this.DNI.Equals(other.DNI));
         }
+
+
+        
+
+
+
 
 /*
         public static void AltaAsociado()

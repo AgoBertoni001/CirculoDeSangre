@@ -9,6 +9,7 @@ namespace CirculoDeSangre
 {
     internal class Sangre
     {
-        public string NombreTipo { get; set; }
+        public string NombreTipo { get; set; } = String.Empty;
     }
+
 }

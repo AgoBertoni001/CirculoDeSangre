@@ -8,7 +8,7 @@ namespace CirculoDeSangre
 {
     internal class Categoria
     {
-        public string NombreCategoria { get; set; }
+        public string NombreCategoria { get; set; } = String.Empty;
         public float MontoCuotra { get; set; }
     }
 }
