@@ -83,7 +83,7 @@
 
 ## Diagrama Clase
 
-![DiagramaClases](https://user-images.githubusercontent.com/99101418/166555432-3d531d00-39bb-4809-b747-5a596c05b94e.png)
+![image](https://user-images.githubusercontent.com/102813997/167223362-bf5d2c1b-b587-441d-b1a9-13fda754dee9.png)
 
 
 
