@@ -115,6 +115,6 @@ En esta iteración se espera que el Banco envíe la petición la cual debe indic
 ***Descripcion 1:***
 ![Descripcion1](https://user-images.githubusercontent.com/99101418/166558962-7c7ba19e-e115-4be1-86da-a2e2945e0b44.png)
 
-***Descripcion 1:***
+***Descripcion 2:***
 ![Descripcion2](https://user-images.githubusercontent.com/99101418/166556171-9ec6c6fe-c9a4-4ef5-9a76-45da617ffd3e.png)
 
