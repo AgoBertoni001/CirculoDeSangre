@@ -118,4 +118,8 @@ En esta iteración se espera que el Banco envíe la petición la cual debe indic
 ***Descripcion 2:***
 ![image](https://user-images.githubusercontent.com/102813997/167223617-8e9b78c4-45de-466f-88e0-71479533768f.png)
 
+## Prototipos:
+![Prototipo Asociados Activos](https://user-images.githubusercontent.com/102813997/169367771-c6b11455-0143-4661-a6b8-8109db7abdd2.png)
+![Prototipo Gestion de Turnos](https://user-images.githubusercontent.com/102813997/169367841-7bcf17ec-30be-4e15-8a27-05783f22aee6.png)
+![Prototipo Registrar Peticion](https://user-images.githubusercontent.com/102813997/169367876-acbd37ea-b430-4f6e-ab98-dfb47bef131e.png)
 
