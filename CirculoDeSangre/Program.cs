@@ -22,7 +22,10 @@ namespace CirculoDeSangre{
 
             do{
                 Console.WriteLine("\n---------------- MENÚ -------------------");
-                Console.WriteLine( $"\t1-Alta: \n\t2-Mostrar lista de Alta Asociados: \n\t0-No deseo realizar operaciones:");
+                Console.WriteLine( $"\t1-Alta: " +
+                    $"\n\t2-Mostrar lista de Alta Asociados: " +
+                    $"\n\t3-Gestionar Peticion del Banco" +
+                    $"\n\t0-No deseo realizar operaciones: ");
                 Console.Write("----------------------------------------------\n");
                 Console.Write("\n\tIngrese su opción: ");
                 opcion = int.Parse(Console.ReadLine());
