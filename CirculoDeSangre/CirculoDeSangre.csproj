@@ -53,6 +53,7 @@
     <Compile Include="Sangre.cs" />
     <Compile Include="Asociado.cs" />
     <Compile Include="ValidacionesAsociados.cs" />
+    <Compile Include="ValidacionesPeticion.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -6,23 +6,37 @@ using System.Threading.Tasks;
 
 namespace CirculoDeSangre
 {
-    internal class Categoria
+    public class Categoria :Sangre
     {
-        public static List<Categoria> listaCategoria = new List<Categoria>()
-        {
-            new Categoria() {NombreCategoria="Pasivo",MontoCuota=50},
-            new Categoria() {NombreCategoria="Activo",MontoCuota=100},
-            new Categoria() {NombreCategoria="Activo",MontoCuota=100},
-            new Categoria() {NombreCategoria="Activo",MontoCuota=100},
-            new Categoria() {NombreCategoria="Activo",MontoCuota=100},
-        };
-        public string NombreCategoria { get; set; } = String.Empty;
-        public double MontoCuota { get; set; }
+
+
 
         /*
         Activos: 18 - 56 años inclusive, sin enfermedades y medicamentos. Cuota: 100
         Pasivo: menores a 18, mayores a 56, enfermedades, y medicamentos. Cuota: 50 */
-         
+
+
+
+
+
+        public static List<Categoria> listaCategoria = new List<Categoria>()
+        {
+            new Categoria() {NombreCategoria="\t-Categoria: Pasivo",MontoCuota=50},
+            new Categoria() {NombreCategoria="\t-Categoria: Activo",MontoCuota=100},
+            new Categoria() {NombreCategoria="\t-Categoria: Activo",MontoCuota=100},
+            new Categoria() {NombreCategoria="\t-Categoria: Activo",MontoCuota=100},
+            new Categoria() {NombreCategoria="\t-Categoria: Activo",MontoCuota=100},
+        };
+
+
+
+
+
+        public string NombreCategoria { get; set; } = String.Empty;
+        public double MontoCuota { get; set; }
+
+
+
         public static void DeterminarCategoria(string nacimiento, string enfermedad, string medicamentos)
         {
             string categoria="";
@@ -30,13 +44,14 @@ namespace CirculoDeSangre
 
             TimeSpan DiferenciaDias = DateTime.Now.Subtract(DateTime.Parse(nacimiento)); //diferencia en dias (cuenta) desde el nacimiento y la fecha actual
             int edad = DiferenciaDias.Days / 365;
+            Console.WriteLine(edad);
 
             if(enfermedad=="Si" || medicamentos=="Si")
             {
                 categoria = "\t- Categoría: Pasivo";
                 montoCuota = 50;
             }
-            else if(edad>=18 && edad <= 56 && enfermedad == "No" || medicamentos == "No")
+            else if(edad>=18 && edad <= 56 && enfermedad == "No" && medicamentos == "No")
             {
                 categoria = "\t- Categoría: Activo";
                 montoCuota = 100;

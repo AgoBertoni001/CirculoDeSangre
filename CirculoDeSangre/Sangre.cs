@@ -7,9 +7,20 @@ using System.Threading.Tasks;
 
 namespace CirculoDeSangre
 {
-    internal class Sangre
+    
+    public class Sangre:Donacion
     {
-        public string NombreTipo { get; set; } = String.Empty;
+
+        public static List<Sangre> listaGrupoSanguineo = new List<Sangre>()
+        {
+            new Sangre() {GrupoSanguineo="\t-: A"},
+            new Sangre() {GrupoSanguineo="\t-: A"},
+            new Sangre() {GrupoSanguineo="\t-: A"},
+            new Sangre() {GrupoSanguineo="\t-: O"},
+            new Sangre() {GrupoSanguineo="\t-: A"},
+        };
+
+        public new string GrupoSanguineo { get; set; }
     }
 
 }
