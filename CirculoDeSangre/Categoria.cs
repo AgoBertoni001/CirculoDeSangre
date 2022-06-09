@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CirculoDeSangre
 {
-    public class Categoria :Sangre
+    public class Categoria : Sangre
     {
 
 
@@ -21,18 +21,14 @@ namespace CirculoDeSangre
 
         public static List<Categoria> listaCategoria = new List<Categoria>()
         {
-            new Categoria() {NombreCategoria="\t-Categoria: Pasivo",MontoCuota=50},
-            new Categoria() {NombreCategoria="\t-Categoria: Activo",MontoCuota=100},
-            new Categoria() {NombreCategoria="\t-Categoria: Activo",MontoCuota=100},
-            new Categoria() {NombreCategoria="\t-Categoria: Activo",MontoCuota=100},
-            new Categoria() {NombreCategoria="\t-Categoria: Activo",MontoCuota=100},
-        };
+            new Categoria() {NombreCategoria="Pasivo",MontoCuota=50},
+            new Categoria() {NombreCategoria="Activo",MontoCuota=100},
+            new Categoria() {NombreCategoria="Activo",MontoCuota=100},
+            new Categoria() {NombreCategoria="Activo",MontoCuota=100},
+            new Categoria() {NombreCategoria="Activo",MontoCuota=100}
+        }; 
 
-
-
-
-
-        public string NombreCategoria { get; set; } = String.Empty;
+        public string NombreCategoria { get; set; }
         public double MontoCuota { get; set; }
 
 
@@ -44,22 +40,30 @@ namespace CirculoDeSangre
 
             TimeSpan DiferenciaDias = DateTime.Now.Subtract(DateTime.Parse(nacimiento)); //diferencia en dias (cuenta) desde el nacimiento y la fecha actual
             int edad = DiferenciaDias.Days / 365;
-            Console.WriteLine(edad);
+            
 
-            if(enfermedad=="Si" || medicamentos=="Si")
+            enfermedad = enfermedad.ToUpper()[0] + enfermedad.Substring(1);
+            medicamentos = medicamentos.ToUpper()[0] + medicamentos.Substring(1);
+
+            if (enfermedad=="Si" || medicamentos=="Si")
             {
-                categoria = "\t- Categoría: Pasivo";
+                categoria = "Pasivo";
                 montoCuota = 50;
             }
             else if(edad>=18 && edad <= 56 && enfermedad == "No" && medicamentos == "No")
             {
-                categoria = "\t- Categoría: Activo";
+                categoria = "Activo";
                 montoCuota = 100;
             }
 
             listaCategoria.Add(new Categoria() { NombreCategoria = categoria, MontoCuota = montoCuota });
 
 
+        }
+
+        public override string ToString()
+        {
+            return String.Format($"\t- Catergoría: {NombreCategoria}");
         }
     }
 }

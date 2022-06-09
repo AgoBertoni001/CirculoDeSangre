@@ -10,17 +10,7 @@ namespace CirculoDeSangre
     
     public class Sangre:Donacion
     {
-
-        public static List<Sangre> listaGrupoSanguineo = new List<Sangre>()
-        {
-            new Sangre() {GrupoSanguineo="\t-: A"},
-            new Sangre() {GrupoSanguineo="\t-: A"},
-            new Sangre() {GrupoSanguineo="\t-: A"},
-            new Sangre() {GrupoSanguineo="\t-: O"},
-            new Sangre() {GrupoSanguineo="\t-: A"},
-        };
-
-        public new string GrupoSanguineo { get; set; }
+         public new string GrupoSanguineo { get; set; }
     }
 
 }

@@ -9,13 +9,35 @@ namespace CirculoDeSangre
 {
     internal class ValidacionesPeticion
     {
+        public static string GrupoSanguineoVal(string grupoSanguineo)
+        {
+            while (!Regex.Match(grupoSanguineo, @"^[A-Z]{1}$|^[A-Z]{2}$").Success)
+            {
+                Console.Write("Ingrese correctamente el Grupo Sanguineo (A-B-O-AB): ");
+                grupoSanguineo = Console.ReadLine();
+            }
+
+            return grupoSanguineo;
+        }
+
+        public static string CantidadDonantesVal (string cantDonantes)
+        {
+            while (!Regex.Match(cantDonantes, @"^\d{1,100}$").Success)
+            {
+                Console.Write("Ingrese correctamente cantidad de donantes: ");
+                cantDonantes = Console.ReadLine();
+            }
+
+            return cantDonantes;
+        }
+
         public static string FechaLimiteVal(string fechaLimite)
         {
             int dia, mes, ano;
 
             while (!Regex.Match(fechaLimite, @"^\d{2}\-\d{2}\-\d{4}$").Success)
             {
-                Console.Write("Ingrese correctamente fecha de nacimiento: ");
+                Console.Write("Ingrese correctamente fecha Limite: ");
                 fechaLimite = Console.ReadLine();
             }
             char delimitador = '-';
@@ -40,7 +62,7 @@ namespace CirculoDeSangre
                 fechaLimite = Console.ReadLine();
             }
 
-            if (ano <= DateTime.Today.Year - 115 || ano > DateTime.Today.Year)
+            if (ano < DateTime.Today.Year || ano > DateTime.Today.Year)
             {
                 Console.Write("Error en año. Ingrese correctamente (dd-mm-aaaa): ");
                 Array.Clear(limiteFecha, 0, limiteFecha.Length);
@@ -49,4 +71,7 @@ namespace CirculoDeSangre
             return fechaLimite;
         }
     }
+
+
+
 }

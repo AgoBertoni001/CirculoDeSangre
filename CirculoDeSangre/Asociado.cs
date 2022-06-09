@@ -11,15 +11,15 @@ namespace CirculoDeSangre
         
         public static List<Asociado> listaAsociado = new List<Asociado>()
         {
-            new Asociado() {DNI="39613161", Nombre = "Flor", Apellido="Bertoni", Nacimiento = "13-09-1996", Domicilio="Chubut", AlturaDomicilio="444", Localidad="Villa María",Telefono="3564 498698",Email="florBertoni@gmail.com",Enfermedad="Si",Medicamentos="Si"},
-            new Asociado() {DNI="51689789", Nombre = "Marti", Apellido="Bertoni", Nacimiento = "14-07-2011", Domicilio="Figueroa Alcorta", AlturaDomicilio="248", Localidad="Seeber",Telefono="-",Email="martiBertoni@gmail.com",Enfermedad="No",Medicamentos="No"},
-            new Asociado() {DNI="24126401", Nombre = "Javier", Apellido="Bertoni", Nacimiento = "18-12-1974", Domicilio="Figueroa Alcorta", AlturaDomicilio="248", Localidad="Seeber",Telefono="3564 535478",Email="Javier041@gmail.com",Enfermedad="No",Medicamentos="No", UltimaDonacion="05-05-2019"},
-            new Asociado() {DNI="24598942", Nombre = "Mariel", Apellido="Coppiz", Nacimiento = "17-06-1976", Domicilio="Figueroa Alcorta", AlturaDomicilio="248", Localidad="Seeber",Telefono="3564 496698",Email="MarielC@gmail.com",Enfermedad="Si",Medicamentos="No"},
-            new Asociado() {DNI="43368970", Nombre = "Ago", Apellido="Bertoni", Nacimiento = "04-04-2002", Domicilio="Cabrera", AlturaDomicilio="2950", Localidad="San Francisco",Telefono="3564 358386",Email="agobertoni01@gmail.com",Enfermedad="No",Medicamentos="No", UltimaDonacion="19-11-2018",CantidadDonaciones=2},
+            new Asociado() {DNI="39613161", Nombre = "Flor", Apellido="Bertoni", Nacimiento = "13-09-1996", Domicilio="Chubut", AlturaDomicilio="444", Localidad="Villa María",Telefono="3564 498698",Email="florBertoni@gmail.com",Enfermedad="Si",Medicamentos="Si", GrupoSanguineo="A"},
+            new Asociado() {DNI="51689789", Nombre = "Marti", Apellido="Bertoni", Nacimiento = "14-07-2011", Domicilio="Figueroa Alcorta", AlturaDomicilio="248", Localidad="Seeber",Telefono="-",Email="martiBertoni@gmail.com",Enfermedad="No",Medicamentos="No", GrupoSanguineo="A"},
+            new Asociado() {DNI="24126401", Nombre = "Javier", Apellido="Bertoni", Nacimiento = "18-12-1974", Domicilio="Figueroa Alcorta", AlturaDomicilio="248", Localidad="Seeber",Telefono="3564 535478",Email="Javier041@gmail.com",Enfermedad="No",Medicamentos="No", GrupoSanguineo="A"},
+            new Asociado() {DNI="24598942", Nombre = "Mariel", Apellido="Coppiz", Nacimiento = "17-06-1976", Domicilio="Figueroa Alcorta", AlturaDomicilio="248", Localidad="Seeber",Telefono="3564 496698",Email="MarielC@gmail.com",Enfermedad="Si",Medicamentos="No",GrupoSanguineo="O"},
+            new Asociado() {DNI="43368970", Nombre = "Ago", Apellido="Bertoni", Nacimiento = "04-04-2002", Domicilio="Cabrera", AlturaDomicilio="2950", Localidad="San Francisco",Telefono="3564 358386",Email="agobertoni01@gmail.com",Enfermedad="No",Medicamentos="No", GrupoSanguineo="A"},
         };
 
         //metodos
-        public string DNI { get; set; } = String.Empty; //mejor si es string
+        public string DNI { get; set; } = String.Empty; 
         public string Nombre { get; set; } = String.Empty;
         public string Apellido { get; set; } = String.Empty;
         public string Nacimiento { get; set; } = String.Empty;
@@ -35,18 +35,15 @@ namespace CirculoDeSangre
         public static void AltaAsociado()
         {
             Console.Clear();
-            int terminosCondiciones;
-           
-            do
-            {
-                Console.WriteLine("\n");
-                Console.Write("¿Se aceptan los terminos y condiciones? (1-para Si, 2-para No): ");
-                terminosCondiciones = int.Parse(Console.ReadLine());
-                //terminosCondiciones = ValidacionesAsociados.TerminosCondicionesVal();
+                       
+            Console.WriteLine("\n");
+            Console.WriteLine("Terminos y condiciones:  ... ");
+            Console.Write("¿Se aceptan los terminos y condiciones? (Si - No): ");
+            string terminosCondiciones = Console.ReadLine();
+            terminosCondiciones = ValidacionesAsociados.TerminosCondicionesVal(terminosCondiciones);
                 
-            } while (terminosCondiciones != 1 && terminosCondiciones != 2);
 
-            if (terminosCondiciones == 1)
+            if (terminosCondiciones == "Si")
             {
                 
                 Console.WriteLine("Alta de Asociado nro: {0}",listaAsociado.Count()+1);
@@ -97,20 +94,44 @@ namespace CirculoDeSangre
 
                 Console.Write("\tGrupo sanguineo (A - B - O - AB): ");
                 string grupoSanguineo = Console.ReadLine();
-                grupoSanguineo = ValidacionesAsociados.MedicamentosVal(grupoSanguineo);
+                grupoSanguineo = ValidacionesAsociados.GrupoSanguineoVal(grupoSanguineo);
 
-                
+                Console.Write("Desea guardar este registro de Alta? (Si - No): ");
+                string registro = Console.ReadLine();
+                registro = ValidacionesAsociados.RegistroVal(registro);
 
-
-                listaAsociado.Add ( new Asociado() { DNI = dni, Nombre = nombre, Apellido = apellido, Nacimiento = nacimiento, Domicilio = domicilio, AlturaDomicilio = alturaDomicilio, Localidad = localidad, Telefono = telefono, Email = email, Enfermedad = enfermedad, Medicamentos = medicamentos, GrupoSanguineo = grupoSanguineo });
-                Categoria.DeterminarCategoria(nacimiento, enfermedad, medicamentos);                            
+                if  (registro == "Si")
+                {
+                    listaAsociado.Add ( new Asociado() { DNI = dni, Nombre = nombre, Apellido = apellido, Nacimiento = nacimiento, Domicilio = domicilio, AlturaDomicilio = alturaDomicilio, Localidad = localidad, Telefono = telefono, Email = email, Enfermedad = enfermedad, Medicamentos = medicamentos, GrupoSanguineo = grupoSanguineo });
+                    Categoria.DeterminarCategoria(nacimiento, enfermedad, medicamentos);  
+                }
+                else 
+                {
+                    Console.WriteLine("No se ha registrado el Alta.");
+                }
+                                          
             }
             else
             {
                 Console.WriteLine("No se aceptaron los terminos y condiciones. No se puede hacer el Alta.");
                 Console.Clear();
+                
             }
-            
+
+            Console.Write("Desea generar otra Alta? (Si - No): ");
+            string nueva = Console.ReadLine();
+            nueva = ValidacionesAsociados.NuevaVal(nueva);
+
+            if (nueva == "Si")
+            {
+                AltaAsociado();
+            }
+            else
+            {
+                Program.Volver();
+            }
+
+
         }
 
         public static void MostrarAlta()
@@ -118,14 +139,13 @@ namespace CirculoDeSangre
             for(int i = 0; i < listaAsociado.Count; i++)
             {
                 Console.WriteLine(listaAsociado[i]);
-                Console.WriteLine(listaCategoria[i].NombreCategoria);
+                Console.WriteLine($"\t-Categoria: {listaCategoria[i].NombreCategoria}");
             }
         }
 
-
         public override string ToString()
         {
-            return String.Format($"\n\n\tDatos del Asociado: \n\t-DNI: {DNI} \n\t-Nombre y Apellido: {Nombre.ToUpper()[0] + Nombre.Substring(1)} {Apellido.ToUpper()[0] + Apellido.Substring(1)} \n\t-Domicilio y Altura: {Domicilio.ToUpper()[0] + Domicilio.Substring(1)} {AlturaDomicilio} \n\t-Localidad: {Localidad.ToUpper()[0] + Localidad.Substring(1)} \n\t-Telefono: {Telefono} \n\t-Enfermedades: {Enfermedad.ToUpper()[0] + Enfermedad.Substring(1)}, y Medicamentos: {Medicamentos.ToUpper()[0] + Medicamentos.Substring(1)}\n\t-Fecha de ultima donacion: {UltimaDonacion}\n\t-Cantidad de veces que donó: {CantidadDonaciones}");
+            return String.Format($"\n\n\tDatos del Asociado: \n\t-DNI: {DNI} \n\t-Nombre y Apellido: {Nombre.ToUpper()[0] + Nombre.Substring(1)} {Apellido.ToUpper()[0] + Apellido.Substring(1)} \n\t-Domicilio y Altura: {Domicilio.ToUpper()[0] + Domicilio.Substring(1)} {AlturaDomicilio} \n\t-Localidad: {Localidad.ToUpper()[0] + Localidad.Substring(1)} \n\t-Telefono: {Telefono} \n\t-Enfermedades: {Enfermedad.ToUpper()[0] + Enfermedad.Substring(1)}, y Medicamentos: {Medicamentos.ToUpper()[0] + Medicamentos.Substring(1)}");
         }
 
     }

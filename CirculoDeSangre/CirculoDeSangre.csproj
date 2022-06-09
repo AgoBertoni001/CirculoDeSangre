@@ -54,6 +54,7 @@
     <Compile Include="Asociado.cs" />
     <Compile Include="ValidacionesAsociados.cs" />
     <Compile Include="ValidacionesPeticion.cs" />
+    <Compile Include="ValidacionesProgram.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

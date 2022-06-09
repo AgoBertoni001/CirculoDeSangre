@@ -10,16 +10,21 @@ namespace CirculoDeSangre
     internal class ValidacionesAsociados
     {
 
-        /*public static int TerminosCondicionesVal(int terminosCondiciones)
+        public static string TerminosCondicionesVal(string terminosCondiciones)
         {
-            while (!Regex.Match(terminosCondiciones, @"^\d{1}$").Success)
+            while (!Regex.Match(terminosCondiciones, @"^[A-Za-z]{2}$").Success)
             {
-                Console.Write("\tIngrese correctamente si acepta los terminos y condiciones (1- para Si - 2 para No): ");
-                terminosCondiciones = int.Parse(Console.ReadLine());
+                Console.Write("Ingrese correctamente si acepta los terminos y condiciones (Si - No)1: ");
+                terminosCondiciones = Console.ReadLine();
+            }
+            while (terminosCondiciones != "Si" && terminosCondiciones != "No")
+            {
+                Console.Write("Ingrese correctamente si acepta los terminos y condiciones (Si - No)2: ");
+                terminosCondiciones = Console.ReadLine();
             }
 
             return terminosCondiciones;
-        }*/
+        }
 
         public static string DniVal(string dni)
         {
@@ -98,7 +103,7 @@ namespace CirculoDeSangre
 
         public static string DomicilioVal(string domicilio)
         {
-            while (!Regex.Match(domicilio, @"^[A-Za-z]{3,15}$|^[A-Za-z]{3,15}\s[A-Za-z]{3,15}\s[A-Za-z]{3,15}$").Success)
+            while (!Regex.Match(domicilio, @"^[A-Za-z]{3,15}$|^[A-Za-z]{3,15}\s[A-Za-z]{3,15}$|^[A-Za-z]{3,15}\s[A-Za-z]{3,15}\s[A-Za-z]{3,15}$").Success)
             {
                 Console.Write("Ingrese correctamente el domicilio: ");
                 domicilio = Console.ReadLine();
@@ -120,7 +125,7 @@ namespace CirculoDeSangre
 
         public static string LocalidadVal(string localidad)
         {
-            while (!Regex.Match(localidad, @"^[A-Za-z]{3,15}$|^[A-Za-z]{3,15}\s[A-Za-z]{3,15}").Success)
+            while (!Regex.Match(localidad, @"^[A-Za-z]{3,15}$|^[A-Za-z]{3,15}\s[A-Za-z]{3,15}$").Success)
             {
                 Console.Write("Ingrese correctamente el localidad: ");
                 localidad = Console.ReadLine();
@@ -155,10 +160,14 @@ namespace CirculoDeSangre
         {
             while (!Regex.Match(enfermedad, @"^[A-Za-z]{2}$").Success)
             {
-                Console.Write("Ingrese correctamente si posee emfermedades: ");
+                Console.Write("Ingrese correctamente si posee emfermedades (Si - No): ");
                 enfermedad = Console.ReadLine();
             }
-
+            while (enfermedad != "Si" && enfermedad != "No")
+            {
+                Console.Write("Ingrese correctamente si posee enfermedades (Si - No): ");
+                enfermedad = Console.ReadLine();
+            }
             return enfermedad;
         }
 
@@ -166,22 +175,27 @@ namespace CirculoDeSangre
         {
             while (!Regex.Match(medicamentos, @"^[A-Za-z]{2}$").Success)
             {
-                Console.Write("Ingrese correctamente si toma medicamentos: ");
+                Console.Write("Ingrese correctamente si toma medicamentos (Si - No): ");
                 medicamentos = Console.ReadLine();
             }
 
+            while (medicamentos != "Si" && medicamentos != "No")
+            {
+                Console.Write("Ingrese correctamente si toma medicamentos (Si - No): ");
+                medicamentos = Console.ReadLine();
+            }
             return medicamentos;
         }
 
         public static string GrupoSanguineoVal(string grupoSanguineo)
         {
-            while (!Regex.Match(grupoSanguineo, @"^[A-Za-z]{1} | ^[A-Za-z]{2}$").Success)
+            while (!Regex.Match(grupoSanguineo, @"^[A-Z]{1}$|^[A-Z]{2}$").Success)
             {
                 Console.Write("Ingrese correctamente su grupo Sanguineo (A - B - O - AB): ");
                 grupoSanguineo = Console.ReadLine();
             }
             
-            while (grupoSanguineo!="A" || grupoSanguineo != "B" || grupoSanguineo != "O" || grupoSanguineo != "AB")
+            while (grupoSanguineo!="A" &&  grupoSanguineo != "B" && grupoSanguineo != "O" && grupoSanguineo != "AB")
             {
                 Console.Write("Ingrese correctamente su grupo Sanguineo (A - B - O - AB): ");
                 Console.ReadLine();
@@ -192,46 +206,34 @@ namespace CirculoDeSangre
 
         }
 
-        public static string UltimaDonacionVal(string ultimaDonacion)
+        public static string RegistroVal(string registro)
         {
-
-            int dia, mes, ano;
-
-            while (!Regex.Match(ultimaDonacion, @"^\d{2}\-\d{2}\-\d{4}$").Success)
+            while (!Regex.Match(registro, @"^[A-Za-z]{2}$").Success)
             {
-                Console.Write("Ingrese correctamente fecha de nacimiento: ");
-                ultimaDonacion = Console.ReadLine();
+                Console.Write("Ingrese correctamente si desea gueardar el registro Alta (Si - No): ");
+                registro = Console.ReadLine();
             }
-            char delimitador = '-';
-            string[] fechaUltimaDonacion = ultimaDonacion.Split(delimitador);
-
-            dia = Int32.Parse(fechaUltimaDonacion[0]);
-            mes = Int32.Parse(fechaUltimaDonacion[1]);
-            ano = Int32.Parse(fechaUltimaDonacion[2]);
-
-
-            if (dia < 01 || dia > 31)
+            while(registro!="Si" && registro != "No")
             {
-                Console.Write("Error en día. Ingrese correctamente (dd-mm-aaaa): ");
-                Array.Clear(fechaUltimaDonacion, 0, fechaUltimaDonacion.Length);
-                ultimaDonacion = Console.ReadLine();
+                Console.Write("Ingrese correctamente si desea gueardar el registro Alta (Si - No): ");
+                registro = Console.ReadLine();
             }
+            return registro;
+        }
 
-            if (mes < 01 || mes > 12)
+        public static string NuevaVal(string nueva)
+        {
+            while (!Regex.Match(nueva, @"^[A-Za-z]{2}$").Success)
             {
-                Console.Write("Error en mes. Ingrese correctamente (dd-mm-aaaa):  ");
-                Array.Clear(fechaUltimaDonacion, 0, fechaUltimaDonacion.Length);
-                ultimaDonacion = Console.ReadLine();
+                Console.Write("Ingrese correctamente si desea generar otra Alta (Si - No): ");
+                nueva = Console.ReadLine();
             }
-
-            if (ano <= DateTime.Today.Year - 115 || ano > DateTime.Today.Year)
+            while (nueva != "Si" && nueva != "No")
             {
-                Console.Write("Error en año. Ingrese correctamente (dd-mm-aaaa): ");
-                Array.Clear(fechaUltimaDonacion, 0, fechaUltimaDonacion.Length);
-                ultimaDonacion = Console.ReadLine();
+                Console.Write("Ingrese correctamente si desea generar otra Alta (Si - No): ");
+                nueva = Console.ReadLine();
             }
-
-            return ultimaDonacion;
+            return nueva;
         }
 
         
